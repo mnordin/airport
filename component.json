@@ -1,0 +1,9 @@
+{
+  "name": "airport",
+  "version": "0.1",
+  "dependencies": {
+    "requirejs": "~2.1.5",
+    "flight": "~1.0.2",
+    "mustache": "~0.7.2"
+  }
+}

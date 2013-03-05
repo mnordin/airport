@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Airport</title>
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+
+  <script src='components/jquery/jquery.js'></script>
+  <script src='components/es5-shim/es5-shim.js'></script>
+  <script src='components/es5-shim/es5-sham.js'></script>
+  <script data-main="requireMain.js" src='components/requirejs/require.js'></script>
+
+  <script>
+    require(
+      [
+        'components/flight/lib/compose',
+        'components/flight/lib/registry',
+        'components/flight/lib/advice',
+        'components/flight/lib/logger',
+        'components/flight/tools/debug/debug'
+      ],
+
+      function(compose, registry, advice, withLogging, debug) {
+        debug.enable(true);
+        compose.mixin(registry, [advice.withAdvice, withLogging]);
+        require(['boot'], function(initialize) {
+          initialize();
+        });
+      }
+    );
+  </script>
+</head>
+<body>
+  <h1>Airport</h1>
+  <table class="table table-striped table-hover">
+    <thead>
+      <th class="span4">Flight</th>
+      <th class="span2">Departing</th>
+      <th class="span2">Book it</th>
+    </thead>
+    <tbody id="flights">
+    </tbody>
+  </table>
+</body>
+</html>
